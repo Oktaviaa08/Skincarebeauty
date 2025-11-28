@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Octavelle</title>
+    <style>
+        .header{
+            width: 100%;
+            background-color: #FFB6C1;
+            color: rgb(88, 21, 21);
+            min-height: 50px;
+        }
+        .logo img{
+            display: block;
+            width: 400px;
+            margin: 0 auto;
+            animation: float 3s ease-in-out infinite;
+        }
+        .tagline {
+    text-align: center;
+}
+
+.tagline h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #B22222;
+    font-family: 'Playfair Display', serif;
+}
+.tagline p {
+    margin: 0;
+    font-size: 14px;
+    color: #444;
+    font-family: 'Poppins', sans-serif;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .content{
+            background-color: #f7d4eb;
+            color: #B22222;
+            min-height: 400px;
+            margin: 0 auto;
+            gap: 500px;
+            overflow: auto;
+            text-align: center;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Rata tengah secara horizontal */
+            gap: 20px; /* Jarak antar produk */
+            padding: 0 10px;
+        }
+        .search-box input {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            outline: none;
+        } 
+        .search-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .search-section input {
+            width: 40%;
+            max-width: 600px;
+            padding: 15px 20px;
+            font-size: 18px;
+            border-radius: 30px;
+            border: 2px solid #ff4e;
+            outline: none;
+            transition: 0.3;
+        }
+        .search-section input:focus {
+            border-color: #B22222;
+            box-shadow: 0 0 10px rgba(255,  78, 136,    0.5);
+        }
+        .btn-shop {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 40px;
+            background: #ff4e88;
+            color: white;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-shop:hover {
+            background: rgba(17, 17, 14, 0.467);
+            transform: scale(1.1);
+        }
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 28px;
+            color: #fff;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: #ff4e88; 
+            transform: scale(1.2);
+        }
+        .footer{
+            background-color: #ff85a1;
+            color: rgb(112, 91, 91);
+            min-height: 1px;
+            padding: 5px;
+            text-align: center;
+            clear: both;
+        }
+        .container{
+            width: 1250px; 
+            margin: 0 auto;
+        }
+        .body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: darksalmon;
+            text-align: center;
+            background: linear-gradient(to bottom right, #8a7076, #0e0b0b);
+        }
+        .menu ul{
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu ul li{
+            transition: all 0.3s ease;
+            margin: 0 15px;
+            display: inline-block;
+            position: relative;
+        }
+        .menu ul li a{
+            padding: 20px 20px;
+            text-align: center;
+            color: #B22222;
+            font-weight: bold;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+        .menu ul li a:hover{
+            color: rgb(0, 0, 0);
+            border-bottom: 2px solid #B22222;
+        }
+        .thumbnail{
+            background-color: #8a7076;
+            color: rgb(247, 202, 213);
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            width: 270px;
+            margin: 10px;
+            float: left;
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1)
+        }
+        .thumbnail:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgb(231, 185, 193);
+            transform: scale(1.05);
+        }
+        .thumbnail img{
+            border-radius: 15px 15px 0 0;
+            transition: transform 0.3;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+        ul.submenu{
+            background-color: #ff85a1;
+            border: 10px solid crimson;
+            text-align: left;
+            position: absolute;
+            top: 10px;
+            left: 0;
+            display: none;
+        }
+        ul.submenu li{
+            display: block;
+        }
+        ul.submenu li a {
+            display: block;
+            padding: 10px 10px;
+        }
+        .menu ul li:hover ul.submenu{
+            display: block;
+        }
+        .jumbotron{
+            width: 100%;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            color: #B22222;
+            background: linear-gradient(135deg,#f7e6e9,#b67c89);
+            border-radius: 15px;
+            background-color: #fdbfce;
+        }
+        .jumbotron h2 {
+            animation: fadeIn 2s ease-in-out;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform:translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        .jumbotron p {
+            font-size: 17px;
+            margin: 10px 0;
+        }
+    </style>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+        <div class="header">
+                <div class="logo">
+                <img src="image/logo pinky.png" alt="logo">
+            </div>
+                <div class="tagline">
+                    <h1>Beuty Personal</h1>
+                    <h1><p>Tampil Cantik Setiap Hari</p></h1>
+                </div>
+            <div class="menu">
+                <ul class="menu">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">About Us</a>
+                <ul class="submenu">
+                    <li><a href="#jumbotron">Tentang Kami</a></li>
+                    <li><a href="#content">Product</a></li>
+                </ul>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                <ul class="submenu">
+                    </li><a href="#footer">Hubungi</a></li>
+                </ul>
+                </div>
+                    <style>
+                        a{
+                            color: aliceblue;
+                            text-decoration: none;
+                        }
+                        a:hover{
+                            color: aquamarine;
+                        }
+                    </style>
+                </ul>
+            </div>
+        <header>
+        </div>
+        <div class="jumbotron" id="jumbotron">
+            <h2 class="typing">Hai cantik, Welcome to Homepage Via! #GlowStartsHere🌷🌷</h2>
+            <h2>Octavelle penyedia produk kecantikan dengan kualitas terbaik</h2>
+            <h2><p>G2G adalah brand kecantikan lokal yang berdedikasi untuk menghadirkan produk perawatan kulit dan makeup berkualitas tinggi, aman, dan terjangkau.
+    Kami percaya bahwa setiap orang berhak merasa percaya diri dengan kulit mereka.
+    Semua produk kami diformulasikan dengan bahan alami dan telah teruji secara dermatologis.</p></h2>
+            <h2><p><marquee>Shine with confidence, glow with via 🌸🌸🌸</marquee></p></h2>
+            <a href="content" class="btn-shop">✨Shop Now✨</a>
+        </div>
+        <div class="search-box">
+                    <input type="text" placeholder="🔍Cari Produk....">
+        <div class="content" id="content">
+            <h2>💝BASIC SKINCARE💝</h2>
+        <div class="product-grid">
+            <div class="thumbnail">
+                <img src="image/download (1).jfif" width="140" height="200">
+                <h2>Brightening Moisturizer</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/Glade 2 Glow Blueberry Ceramide moisturizer 30 gr.jfif" width="150" height="200">
+                <h2>Blueberry Moisturizer</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/Glad2Glow Centella Allantoin Soothing Gel Moisturizer - 55gr_30gr.jfif" width="150" height="200">
+                <h2>Centella Moisturizer</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/ijo.jpeg" width="150" height="200">
+                <h2>Kiwi Acne Moisturizer</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/biru.jpeg" width="150" height="175">
+                <h2>Sensitive Calming Moisturizer</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/kuning.jpeg" width="150" height="205">
+                <h2>Moisturizer VIT C Power</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/retinol.jpeg" width="150" height="205">
+                <h2>Retinol Moisturizer</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/serum putih.jpeg" width="150" height="205">
+                <h2>377 Serum</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/serum ijo.jpeg" width="150" height="180">
+                <h2>Centella Serum</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/serum pink.jpeg" width="150" height="180">
+                <h2>Serum Brightening</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/serum kuning.jfif" width="150" height="180">
+                <h2>Jeju serum</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/ijo kotak.jpeg" width="150" height="180">
+                <h2>Matcha acne cleanser</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/hitam cleanser.jpeg" width="150" height="200">
+                <h2>Deep Pore Clean</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/milk clean.jpeg" width="150" height="200">
+                <h2>Milk Cleanser</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/download (2).jfif" width="150" height="200">
+                <h2>Blueberry Cleanser</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/GLAD2GLOW Blueberry Ceramide Low Ph Cleanser _ Milk Amino Acids Gentle Cleanser _ Centella Salicylic Acid  _ Yuzu AHA Exfoliating Cleanser Gel Face Wash 70 ml pembersih muka menjaga kelembaban  mengurangi minyak berlebih pada.jfif" width="150" height="200">
+                <h2>Sensistive Cleanser</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/SKINMED ~ GLAD2GLOW REAL MUGWORT CLAY MASK STICK SALICYLIC ACID.jfif" width="150" height="196">
+                <h2>Salicylic Acid Mugwort</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/Glad2Glow Pomegranate Niacinamide Brightening Clay Stick 25g Masker Wash Off Pencerah Wajah Masker Mencerahkan Masker Wajah Mask Clay Mask Brightening Masker Clay Mask Pembersih Komedo Masker Stik Masker Stick.jfif" width="150" height="195">
+                <h2>Pomegranate Mugwort</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/Glad2Glow Volcano 3D Acid Pore Clay Stick 25g _ Acid Acne Clay Stick Pembersihan mendalam set pembersih set penghilang komedo.jfif" width="150" height="195">
+                <h2>Volcano Mugwort</h2>
+                <p>Rp 43.000</p>
+            </div>
+            <div class="thumbnail">
+                <img src="image/[New Launch] Glad2Glow Cherry Blossom Betaine Micellar Water 300 ml Make Up Remover Pembersih Make U.jfif" width="150" height="195">
+                <h2>Micellar Water</h2>
+                <p>Rp 43.000</p>
+            </div>
+        </div>
+            <div class="footer" id="footer">
+                <h2>© 2025 Octavelle</h2>
+                <p>Follow us on:</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/oktaviagst_" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@viaaaooo" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/628xxxxxxx" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+</div>
+                </div>
+        </div>
+    </footer>
+</body>
+</html>
+    </div>
+</body>
+</html>
